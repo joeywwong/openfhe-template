@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 16,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "wsl-release",
+      "displayName": "WSL Release (OpenFHE in /usr/local)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "OpenFHE_DIR": "/usr/local/lib/OpenFHE"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "wsl-release",
+      "configurePreset": "wsl-release",
+      "jobs": 2
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "wsl-release",
+      "configurePreset": "wsl-release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
+
